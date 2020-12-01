@@ -23,20 +23,24 @@ __fastcall TForm1::TForm1(TComponent* Owner)
 void __fastcall TForm1::CountClick(TObject *Sender)
 {
 
-    int n;
+    int arrSize, numOfMaxElem, numOfMinElem;
 
     AnsiString str = EditSizeOfArr->Text;
 
     if(str == "")
     {
-        n = 0;
+        arrSize = 0;
     }
     else
     {
-        n = StrToInt(str);
+        arrSize = StrToInt(str);
     }
 
-    int *arr = new int[n];
+    int *arr = new int[arrSize];
+
+    numOfMaxElem =  maxOfArray(arr[], arrSize);
+
+    numOfMinElem =  minOfArray(arr[], arrSize);
 }
 //---------------------------------------------------------------------------
 
@@ -90,12 +94,35 @@ void __fastcall TForm1::changeSizeClick(TObject *Sender)
 
 int maxOfArray(int arr[], int arrLength)
 {
-    for(int i = 0; i < arrLength; i++)
-    {
+    int max = arr[0];
     
+    for(int i = 1; i < arrLength; i++)
+    {
+        if(arr[i] > arr[i - 1])
+        {
+            max = arr[i];
+        }
     }
+    
+    return max;
+}
+
+int minOfArray(int arr[], int arrLength)
+{
+    int min = arr[0];
+
+    for(int i = 1; i < arrLength; i++)
+    {
+        if(arr[i] < arr[i - 1])
+        {
+            min = arr[i];
+        }
+    }
+
+    return min;
 }
 //---------------------------------------------------------------------------
+
 
 
 

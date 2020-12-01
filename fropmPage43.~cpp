@@ -88,10 +88,37 @@ void __fastcall TForm1::changeSizeClick(TObject *Sender)
 }
 
 
-int maxOfArray(int arr[])
+int maxOfArray(int arr[], int arrLength)
 {
+    int max = arr[0];
+    
+    for(int i = 1; i < arrLength; i++)
+    {
+        if(arr[i] > arr[i - 1])
+        {
+            max = arr[i];
+        }
+    }
+    
+    return max;
+}
+
+int minOfArray(int arr[], int arrLength)
+{
+    int min = arr[0];
+
+    for(int i = 1; i < arrLength; i++)
+    {
+        if(arr[i] < arr[i - 1])
+        {
+            min = arr[i];
+        }
+    }
+
+    return min;
 }
 //---------------------------------------------------------------------------
+
 
 
 

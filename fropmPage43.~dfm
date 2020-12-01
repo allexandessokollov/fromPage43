@@ -30,7 +30,7 @@ object Form1: TForm1
     Left = 208
     Top = 168
     Width = 67
-    Height = 25
+    Height = 24
     Caption = 'answer:'
     Font.Charset = RUSSIAN_CHARSET
     Font.Color = clWindowText
