@@ -75,7 +75,7 @@ void __fastcall TForm1::fillArrayClick(TObject *Sender)
     }
     else if(StrToInt(str) > 14)
     {
-        ShowMessage("Максимальное количество 10!");
+        ShowMessage("maximum quantity is 14");
         EditSizeOfArr->Text = "14";
     }
     else
@@ -101,7 +101,7 @@ void __fastcall TForm1::changeSizeClick(TObject *Sender)
     }
     else if (StrToInt(str) > 14)
     {
-        ShowMessage("Максимальное количество 10!");
+        ShowMessage("maximum quantity is 14");
         EditSizeOfArr->Text = "14";
         StringGrid1->ColCount = StrToInt(14);
     }
