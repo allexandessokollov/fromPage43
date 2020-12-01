@@ -111,7 +111,7 @@ object Form1: TForm1
     TabOrder = 4
     OnClick = changeSizeClick
   end
-  object Edit2: TEdit
+  object answerEdit: TEdit
     Left = 288
     Top = 168
     Width = 81

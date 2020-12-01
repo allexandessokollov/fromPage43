@@ -18,7 +18,7 @@ __published:	// IDE-managed Components
         TEdit *EditSizeOfArr;
         TButton *fillArray;
         TButton *changeSize;
-        TEdit *Edit2;
+        TEdit *answerEdit;
         TLabel *answer;
         void __fastcall CountClick(TObject *Sender);
         void __fastcall fillArrayClick(TObject *Sender);

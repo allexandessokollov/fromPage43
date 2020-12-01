@@ -24,6 +24,7 @@ void __fastcall TForm1::CountClick(TObject *Sender)
 {
 
     int arrSize, numOfMaxElem, numOfMinElem;
+    bool checkStringGrid;
 
     AnsiString str = EditSizeOfArr->Text;
 
@@ -38,9 +39,27 @@ void __fastcall TForm1::CountClick(TObject *Sender)
 
     int *arr = new int[arrSize];
 
-    numOfMaxElem =  maxOfArray(arr[], arrSize);
+    checkStringGrid = isStringGridFilled();
 
-    numOfMinElem =  minOfArray(arr[], arrSize);
+    if(checkStringGrid)
+    {
+        for(int i = 0; i < arrSize; i++)
+        {
+            arr[i] = StrToInt(StringGrid1->Cells[i][0]);
+        }
+    }
+    else
+    {
+        ShowMessage("you should Fill array");
+    }
+
+    numOfMaxElem =  numMaxOfArray(arr[], arrSize);
+
+    numOfMinElem =  numMinOfArray(arr[], arrSize);
+
+    answerEdit->Text = contAnswer(arr[], numOfMinElem, numOfMaxElem);
+
+
 }
 //---------------------------------------------------------------------------
 
@@ -84,6 +103,7 @@ void __fastcall TForm1::changeSizeClick(TObject *Sender)
     {
         ShowMessage("Максимальное количество 10!");
         EditSizeOfArr->Text = "14";
+        StringGrid1->ColCount = StrToInt(14);
     }
     else
     {
@@ -92,35 +112,75 @@ void __fastcall TForm1::changeSizeClick(TObject *Sender)
 }
 
 
-int maxOfArray(int arr[], int arrLength)
+int numMaxOfArray(int arr[], int arrLength)
 {
-    int max = arr[0];
+    int max = 0;
     
     for(int i = 1; i < arrLength; i++)
     {
         if(arr[i] > arr[i - 1])
         {
-            max = arr[i];
+            max = i;
         }
     }
     
     return max;
 }
 
-int minOfArray(int arr[], int arrLength)
+int numMinOfArray(int arr[], int arrLength)
 {
-    int min = arr[0];
+    int min = 0;
 
     for(int i = 1; i < arrLength; i++)
     {
         if(arr[i] < arr[i - 1])
         {
-            min = arr[i];
+            min = i;
         }
     }
 
     return min;
 }
+
+bool isStringGridFilled()
+{
+    bool ret true;
+
+    for(int i = 0; i < StringGrid1->ColCount; i++)
+    {
+        if(StringGrid1->Cells[i][0] == "")
+        {
+            return false;
+        }
+    }
+
+    return ret;
+}
+
+int countAnswer(int arr[], int min, int max)
+{
+    int answer = 1;
+
+    if(max < min)
+    {
+        int tmp = max;
+        max = min;
+        min = tmp;
+    }
+
+    for(int i = min + 1; i < max; i++)
+    {
+        answer *= arr[i];
+
+        if(arr[i] == 0)
+        {
+            return 0;
+        }
+    }
+
+    return answer;
+}
+
 //---------------------------------------------------------------------------
 
 
