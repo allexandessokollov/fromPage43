@@ -3,9 +3,9 @@
 <PROJECT>
   <MACROS>
     <VERSION value="BCB.06.00"/>
-    <PROJECT value="fromPage43.exe"/>
-    <OBJFILES value="fromPage43.obj"/>
-    <RESFILES value="fromPage43.res"/>
+    <PROJECT value="fropmPage43.exe"/>
+    <OBJFILES value="fropmPage43.obj"/>
+    <RESFILES value="fropmPage43.res"/>
     <IDLFILES value=""/>
     <IDLGENFILES value=""/>
     <DEFFILE value=""/>
@@ -29,7 +29,7 @@
     <LINKER value="ilink32"/>
     <USERDEFINES value="_DEBUG"/>
     <SYSDEFINES value="_RTLDLL;NO_STRICT;USEPACKAGES"/>
-    <MAINSOURCE value="fromPage43.cpp"/>
+    <MAINSOURCE value="fropmPage43.cpp"/>
     <INCLUDEPATH value="&quot;C:\Program Files (x86)\Borland\CBuilder6\Projects&quot;;C:\Git\fromPage43;$(BCB)\include;$(BCB)\include\vcl"/>
     <LIBPATH value="&quot;C:\Program Files (x86)\Borland\CBuilder6\Projects&quot;;C:\Git\fromPage43;$(BCB)\lib\obj;$(BCB)\lib"/>
     <WARNINGS value="-w-par"/>
@@ -53,9 +53,9 @@
     <OTHERFILES value=""/>
   </LINKER>
   <FILELIST>
-      <FILE FILENAME="fromPage43.res" FORMNAME="" UNITNAME="fromPage43.res" CONTAINERID="ResTool" DESIGNCLASS="" LOCALCOMMAND=""/>
-      <FILE FILENAME="fromPage43.cpp" FORMNAME="" UNITNAME="fromPage43" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
-      <FILE FILENAME="fromPage43.cpp" FORMNAME="Form1" UNITNAME="fromPage43" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="fropmPage43.res" FORMNAME="" UNITNAME="fropmPage43.res" CONTAINERID="ResTool" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="fropmPage43.cpp" FORMNAME="" UNITNAME="fropmPage43" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="fropmPage43.cpp" FORMNAME="Form1" UNITNAME="fropmPage43" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
   </FILELIST>
   <BUILDTOOLS>
   </BUILDTOOLS>
