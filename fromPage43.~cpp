@@ -1,4 +1,3 @@
-//---------------------------------------------------------------------------
 #include <vcl.h>
 
 #pragma hdrstop
@@ -128,12 +127,13 @@ void __fastcall TForm1::CountClick(TObject *Sender)
 
     if((numOfMaxElem - numOfMinElem) <= 1)
     {
-        answerEdit->Text = "there is no elements between";
+        Label1->Caption = "there is no elements between";
         ShowMessage("there is no elements between");
     }
     else
     {
-        answerEdit->Text = countAnswer(arr, numOfMinElem, numOfMaxElem);
+        AnsiString str = IntToStr(countAnswer(arr, numOfMinElem, numOfMaxElem));
+        Label1->Caption = str;
     }
 
     
@@ -189,8 +189,5 @@ void __fastcall TForm1::changeSizeClick(TObject *Sender)
         StringGrid1->ColCount = StrToInt(str);
     }
 }
-
-
-
 
 

@@ -1,5 +1,3 @@
-//---------------------------------------------------------------------------
-
 #ifndef fromPage43H
 #define fromPage43H
 //---------------------------------------------------------------------------
@@ -18,8 +16,8 @@ __published:	// IDE-managed Components
         TEdit *EditSizeOfArr;
         TButton *fillArray;
         TButton *changeSize;
-        TEdit *answerEdit;
         TLabel *answer;
+        TLabel *Label1;
         void __fastcall CountClick(TObject *Sender);
         void __fastcall fillArrayClick(TObject *Sender);
         void __fastcall changeSizeClick(TObject *Sender);
