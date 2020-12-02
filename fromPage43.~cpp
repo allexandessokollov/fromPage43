@@ -69,7 +69,7 @@ int  TForm1::countAnswer(int arr[], int min, int max)
 
     for(int i = min + 1; i < max; i++)
     {
-        answer = answer * arr[i];
+        answer *= arr[i];
 
         if(arr[i] == 0)
         {
@@ -179,8 +179,5 @@ void __fastcall TForm1::changeSizeClick(TObject *Sender)
         StringGrid1->ColCount = StrToInt(str);
     }
 }
-
-
-
 
 
