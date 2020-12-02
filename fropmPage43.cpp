@@ -1,5 +1,3 @@
-//---------------------------------------------------------------------------
-
 #include <vcl.h>
 
 #pragma hdrstop
@@ -9,7 +7,77 @@
 #pragma package(smart_init)
 #pragma resource "*.dfm"
 
+int numMaxOfArray(int arr[], int arrLength)
+{
+    int max = 0;
+    
+    for(int i = 1; i < arrLength; i++)
+    {
+        if(arr[i] > arr[i - 1])
+        {
+            max = i;
+        }
+    }
+    
+    return max;
+}
 
+int numMinOfArray(int arr[], int arrLength)
+{
+    int min = 0;
+
+    for(int i = 1; i < arrLength; i++)
+    {
+        if(arr[i] < arr[i - 1])
+        {
+            min = i;
+        }
+    }
+
+    return min;
+}
+
+bool isStringGridFilled(int colCount)
+{
+    bool ret = true;
+
+
+
+    for(int i = 0; i < colCount; i++)
+    {
+        AnsiString str = StringGrid1->Cells[i][0];
+        if(str == "")
+        {
+            return false;
+        }
+    }
+
+    return ret;
+}
+
+int countAnswer(int arr[], int min, int max)
+{
+    int answer = 1;
+
+    if(max < min)
+    {
+        int tmp = max;
+        max = min;
+        min = tmp;
+    }
+
+    for(int i = min + 1; i < max; i++)
+    {
+        answer *= arr[i];
+
+        if(arr[i] == 0)
+        {
+            return 0;
+        }
+    }
+
+    return answer;
+}
 
 TForm1 *Form1;
 //---------------------------------------------------------------------------
@@ -39,7 +107,7 @@ void __fastcall TForm1::CountClick(TObject *Sender)
 
     int *arr = new int[arrSize];
 
-    checkStringGrid = isStringGridFilled();
+    checkStringGrid = isStringGridFilled(arrSize);
 
     if(checkStringGrid)
     {
@@ -53,11 +121,11 @@ void __fastcall TForm1::CountClick(TObject *Sender)
         ShowMessage("you should Fill array");
     }
 
-    numOfMaxElem =  numMaxOfArray(arr[], arrSize);
+    numOfMaxElem =  numMaxOfArray(arr, arrSize);
 
-    numOfMinElem =  numMinOfArray(arr[], arrSize);
+    numOfMinElem =  numMinOfArray(arr, arrSize);
 
-    answerEdit->Text = contAnswer(arr[], numOfMinElem, numOfMaxElem);
+    answerEdit->Text = countAnswer(arr, numOfMinElem, numOfMaxElem);
 
 
 }
@@ -110,80 +178,6 @@ void __fastcall TForm1::changeSizeClick(TObject *Sender)
         StringGrid1->ColCount = StrToInt(str);
     }
 }
-
-
-int numMaxOfArray(int arr[], int arrLength)
-{
-    int max = 0;
-    
-    for(int i = 1; i < arrLength; i++)
-    {
-        if(arr[i] > arr[i - 1])
-        {
-            max = i;
-        }
-    }
-    
-    return max;
-}
-
-int numMinOfArray(int arr[], int arrLength)
-{
-    int min = 0;
-
-    for(int i = 1; i < arrLength; i++)
-    {
-        if(arr[i] < arr[i - 1])
-        {
-            min = i;
-        }
-    }
-
-    return min;
-}
-
-bool isStringGridFilled()
-{
-    bool ret true;
-
-    for(int i = 0; i < StringGrid1->ColCount; i++)
-    {
-        if(StringGrid1->Cells[i][0] == "")
-        {
-            return false;
-        }
-    }
-
-    return ret;
-}
-
-int countAnswer(int arr[], int min, int max)
-{
-    int answer = 1;
-
-    if(max < min)
-    {
-        int tmp = max;
-        max = min;
-        min = tmp;
-    }
-
-    for(int i = min + 1; i < max; i++)
-    {
-        answer *= arr[i];
-
-        if(arr[i] == 0)
-        {
-            return 0;
-        }
-    }
-
-    return answer;
-}
-
-//---------------------------------------------------------------------------
-
-
 
 
 
