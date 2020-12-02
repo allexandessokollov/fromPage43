@@ -10,36 +10,32 @@
 
 int  TForm1::numMaxOfArray(int arr[], int arrLength)
 {
-    int maxPos = 0,
-    maxValue = arr[0];
+    int max = 0;
     
     for(int i = 1; i < arrLength; i++)
     {
-        if(arr[i] > maxValue)
+        if(arr[i] > arr[i - 1])
         {
-            maxPos = i;
-            maxValue = arr[i];
+            max = i;
         }
     }
     
-    return maxPos;
+    return max;
 }
 
 int  TForm1::numMinOfArray(int arr[], int arrLength)
 {
-    int minPos = 0,
-    minValue = arr[0];
+    int min = 0;
 
     for(int i = 1; i < arrLength; i++)
     {
-        if(arr[i] < minValue)
+        if(arr[i] < arr[i - 1])
         {
-            minPos = i;
-            minValue = arr[i];
+            min = i;
         }
     }
 
-    return minPos;
+    return min;
 }
 
 bool  TForm1::isStringGridFilled(int colCount)
@@ -130,7 +126,17 @@ void __fastcall TForm1::CountClick(TObject *Sender)
 
     numOfMinElem =  numMinOfArray(arr, arrSize);
 
-    answerEdit->Text = countAnswer(arr, numOfMinElem, numOfMaxElem);
+    if((numOfMinElem - numOfMaxElem) < 2 || (numOfMaxElem - numOfMinElem) < 2)
+    {
+        answerEdit->Text = "there is no elements between";
+        ShowMessage("there is no elements between");
+    }
+    else
+    {
+        answerEdit->Text = countAnswer(arr, numOfMinElem, numOfMaxElem);
+    }
+
+    
 
 
 }
