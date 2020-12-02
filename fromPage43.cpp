@@ -10,32 +10,36 @@
 
 int  TForm1::numMaxOfArray(int arr[], int arrLength)
 {
-    int max = 0;
+    int maxPos = 0,
+    maxValue = arr[0];
     
     for(int i = 1; i < arrLength; i++)
     {
-        if(arr[i] > arr[i - 1])
+        if(arr[i] > maxValue)
         {
-            max = i;
+            maxPos = i;
+            maxValue = arr[i];
         }
     }
     
-    return max;
+    return maxPos;
 }
 
 int  TForm1::numMinOfArray(int arr[], int arrLength)
 {
-    int min = 0;
+    int minPos = 0,
+    minValue = arr[0];
 
     for(int i = 1; i < arrLength; i++)
     {
-        if(arr[i] < arr[i - 1])
+        if(arr[i] < minValue)
         {
-            min = i;
+            minPos = i;
+            minValue = arr[i];
         }
     }
 
-    return min;
+    return minPos;
 }
 
 bool  TForm1::isStringGridFilled(int colCount)
