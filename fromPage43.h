@@ -1,7 +1,7 @@
 //---------------------------------------------------------------------------
 
-#ifndef fropmPage43H
-#define fropmPage43H
+#ifndef fromPage43H
+#define fromPage43H
 //---------------------------------------------------------------------------
 #include <Classes.hpp>
 #include <Controls.hpp>

@@ -1,8 +1,8 @@
 object Form1: TForm1
-  Left = 231
-  Top = 195
-  Width = 619
-  Height = 403
+  Left = 197
+  Top = 184
+  Width = 656
+  Height = 309
   Caption = 'Form1'
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -52,7 +52,6 @@ object Form1: TForm1
     Font.Style = []
     ParentFont = False
     TabOrder = 0
-    OnClick = CountClick
   end
   object StringGrid1: TStringGrid
     Left = 16
@@ -94,7 +93,6 @@ object Form1: TForm1
     Font.Style = []
     ParentFont = False
     TabOrder = 3
-    OnClick = fillArrayClick
   end
   object changeSize: TButton
     Left = 392
@@ -109,7 +107,6 @@ object Form1: TForm1
     Font.Style = []
     ParentFont = False
     TabOrder = 4
-    OnClick = changeSizeClick
   end
   object answerEdit: TEdit
     Left = 288

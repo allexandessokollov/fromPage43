@@ -1,116 +1,12 @@
 //---------------------------------------------------------------------------
-
 #include <vcl.h>
 
 #pragma hdrstop
 
-#include "fropmPage43.h"
+#include "fromPage43.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma resource "*.dfm"
-
-
-
-TForm1 *Form1;
-//---------------------------------------------------------------------------
-__fastcall TForm1::TForm1(TComponent* Owner)
-        : TForm(Owner)
-{
-}
-//---------------------------------------------------------------------------
-
-
-void __fastcall TForm1::CountClick(TObject *Sender)
-{
-
-    int arrSize, numOfMaxElem, numOfMinElem;
-    bool checkStringGrid;
-
-    AnsiString str = EditSizeOfArr->Text;
-
-    if(str == "")
-    {
-        arrSize = 0;
-    }
-    else
-    {
-        arrSize = StrToInt(str);
-    }
-
-    int *arr = new int[arrSize];
-
-    checkStringGrid = isStringGridFilled();
-
-    if(checkStringGrid)
-    {
-        for(int i = 0; i < arrSize; i++)
-        {
-            arr[i] = StrToInt(StringGrid1->Cells[i][0]);
-        }
-    }
-    else
-    {
-        ShowMessage("you should Fill array");
-    }
-
-    numOfMaxElem =  numMaxOfArray(arr[], arrSize);
-
-    numOfMinElem =  numMinOfArray(arr[], arrSize);
-
-    answerEdit->Text = contAnswer(arr[], numOfMinElem, numOfMaxElem);
-
-
-}
-//---------------------------------------------------------------------------
-
-
-void __fastcall TForm1::fillArrayClick(TObject *Sender)
-{
-
-    AnsiString str = EditSizeOfArr->Text;
-
-    if(str == "")
-    {
-        StringGrid1->ColCount = 0;
-    }
-    else if(StrToInt(str) > 14)
-    {
-        ShowMessage("Максимальное количество 10!");
-        EditSizeOfArr->Text = "14";
-    }
-    else
-    {
-        StringGrid1->ColCount = StrToInt(str);
-    }
-
-    for(int i = 0; i < StringGrid1->ColCount; i++)
-    {
-        StringGrid1->Cells[i][0] = StrToInt(random(20) - 10);
-    }
-}
-//---------------------------------------------------------------------------
-
-
-void __fastcall TForm1::changeSizeClick(TObject *Sender)
-{
-    AnsiString str = EditSizeOfArr->Text;
-
-    if(str == "")
-    {
-        StringGrid1->ColCount = 0;
-    }
-    else if (StrToInt(str) > 14)
-    {
-        ShowMessage("Максимальное количество 14");
-        EditSizeOfArr->Text = "14";
-        StringGrid1->ColCount = StrToInt(14);
-    }
-    else
-    {
-        StringGrid1->ColCount = StrToInt(str);
-    }
-}
-
 
 int numMaxOfArray(int arr[], int arrLength)
 {
@@ -142,13 +38,16 @@ int numMinOfArray(int arr[], int arrLength)
     return min;
 }
 
-bool isStringGridFilled()
+bool isStringGridFilled(int colCount)
 {
-    bool ret true;
+    bool ret = true;
 
-    for(int i = 0; i < StringGrid1->ColCount; i++)
+
+
+    for(int i = 0; i < colCount; i++)
     {
-        if(StringGrid1->Cells[i][0] == "")
+        AnsiString str = StringGrid1->Cells[i][0];
+        if(str == "")
         {
             return false;
         }
@@ -181,9 +80,102 @@ int countAnswer(int arr[], int min, int max)
     return answer;
 }
 
+TForm1 *Form1;
+//---------------------------------------------------------------------------
+__fastcall TForm1::TForm1(TComponent* Owner)
+        : TForm(Owner)
+{
+}
 //---------------------------------------------------------------------------
 
 
+void __fastcall TForm1::CountClick(TObject *Sender)
+{
+
+    int arrSize, numOfMaxElem, numOfMinElem;
+    bool checkStringGrid;
+
+    AnsiString str = EditSizeOfArr->Text;
+
+    if(str == "")
+    {
+        arrSize = 0;
+    }
+    else
+    {
+        arrSize = StrToInt(str);
+    }
+
+    int *arr = new int[arrSize];
+
+    checkStringGrid = isStringGridFilled(arrSize);
+
+    if(checkStringGrid)
+    {
+        for(int i = 0; i < arrSize; i++)
+        {
+            arr[i] = StrToInt(StringGrid1->Cells[i][0]);
+        }
+    }
+    else
+    {
+        ShowMessage("you should Fill array");
+    }
+
+    numOfMaxElem =  numMaxOfArray(arr, arrSize);
+
+    numOfMinElem =  numMinOfArray(arr, arrSize);
+
+    answerEdit->Text = countAnswer(arr, numOfMinElem, numOfMaxElem);
 
 
+}
+//---------------------------------------------------------------------------
 
+
+void __fastcall TForm1::fillArrayClick(TObject *Sender)
+{
+
+    AnsiString str = EditSizeOfArr->Text;
+
+    if(str == "")
+    {
+        StringGrid1->ColCount = 0;
+    }
+    else if(StrToInt(str) > 14)
+    {
+        ShowMessage("maximum quantity is 14");
+        EditSizeOfArr->Text = "14";
+    }
+    else
+    {
+        StringGrid1->ColCount = StrToInt(str);
+    }
+
+    for(int i = 0; i < StringGrid1->ColCount; i++)
+    {
+        StringGrid1->Cells[i][0] = StrToInt(random(20) - 10);
+    }
+}
+//---------------------------------------------------------------------------
+
+
+void __fastcall TForm1::changeSizeClick(TObject *Sender)
+{
+    AnsiString str = EditSizeOfArr->Text;
+
+    if(str == "")
+    {
+        StringGrid1->ColCount = 0;
+    }
+    else if (StrToInt(str) > 14)
+    {
+        ShowMessage("maximum quantity is 14");
+        EditSizeOfArr->Text = "14";
+        StringGrid1->ColCount = StrToInt(14);
+    }
+    else
+    {
+        StringGrid1->ColCount = StrToInt(str);
+    }
+}
