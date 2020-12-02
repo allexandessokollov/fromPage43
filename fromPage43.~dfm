@@ -39,6 +39,18 @@ object Form1: TForm1
     Font.Style = []
     ParentFont = False
   end
+  object Label1: TLabel
+    Left = 288
+    Top = 168
+    Width = 81
+    Height = 24
+    Font.Charset = RUSSIAN_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -19
+    Font.Name = 'Trebuchet MS'
+    Font.Style = []
+    ParentFont = False
+  end
   object Count: TButton
     Left = 16
     Top = 168
@@ -110,18 +122,5 @@ object Form1: TForm1
     ParentFont = False
     TabOrder = 4
     OnClick = changeSizeClick
-  end
-  object answerEdit: TEdit
-    Left = 288
-    Top = 168
-    Width = 81
-    Height = 32
-    Font.Charset = RUSSIAN_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -19
-    Font.Name = 'Trebuchet MS'
-    Font.Style = []
-    ParentFont = False
-    TabOrder = 5
   end
 end
