@@ -7,7 +7,9 @@
 #pragma package(smart_init)
 #pragma resource "*.dfm"
 
-const int maxArraySize = 14;
+const int MAX_ARRAY_SIZE = 14;
+int const MAX_RANDOM_VALUE = 15;
+int const MIN_RANDOM_VALUE = -5;
 
 int  TForm1::numMaxOfArray(int arr[], int arrLength)
 {
@@ -43,11 +45,10 @@ int  TForm1::numMinOfArray(int arr[], int arrLength)
     return minPos;
 }
 
+
 bool  TForm1::isStringGridFilled(int colCount)
 {
     bool ret = true;
-
-
 
     for(int i = 0; i < colCount; i++)
     {
@@ -74,6 +75,7 @@ int  TForm1::countAnswer(int arr[], int minIndex, int maxIndex)
     return answer;
 }
 
+
 TForm1 *Form1;
 //---------------------------------------------------------------------------
 __fastcall TForm1::TForm1(TComponent* Owner)
@@ -85,7 +87,6 @@ __fastcall TForm1::TForm1(TComponent* Owner)
 
 void __fastcall TForm1::CountClick(TObject *Sender)
 {
-
     int arrSize, numOfMaxElem, numOfMinElem;
     bool checkStringGrid;
 
@@ -137,24 +138,18 @@ void __fastcall TForm1::CountClick(TObject *Sender)
         AnsiString str = IntToStr(countAnswer(arr, numOfMinElem, numOfMaxElem));
         Label1->Caption = str;
     }
-
-    
-
-
 }
 //---------------------------------------------------------------------------
 
-
 void __fastcall TForm1::fillArrayClick(TObject *Sender)
 {
-
     AnsiString str = EditSizeOfArr->Text;
 
     if(str == "")
     {
         StringGrid1->ColCount = 0;
     }
-    else if(StrToInt(str) > maxArraySize)
+    else if(StrToInt(str) > MAX_ARRAY_SIZE)
     {
         ShowMessage("maximum quantity is 14");
         EditSizeOfArr->Text = "14";
@@ -166,7 +161,7 @@ void __fastcall TForm1::fillArrayClick(TObject *Sender)
 
     for(int i = 0; i < StringGrid1->ColCount; i++)
     {
-        StringGrid1->Cells[i][0] = StrToInt(random(20) - 10);
+        StringGrid1->Cells[i][0] = StrToInt(random(MAX_RANDOM_VALUE - MIN_RANDOM_VALUE) + MIN_RANDOM_VALUE);
     }
 }
 //---------------------------------------------------------------------------
@@ -180,11 +175,11 @@ void __fastcall TForm1::changeSizeClick(TObject *Sender)
     {
         StringGrid1->ColCount = 0;
     }
-    else if (StrToInt(str) > maxArraySize)
+    else if (StrToInt(str) > MAX_ARRAY_SIZE)
     {
         ShowMessage("maximum quantity is 14");
         EditSizeOfArr->Text = "14";
-        StringGrid1->ColCount = StrToInt(maxArraySize);
+        StringGrid1->ColCount = StrToInt(MAX_ARRAY_SIZE);
     }
     else
     {
